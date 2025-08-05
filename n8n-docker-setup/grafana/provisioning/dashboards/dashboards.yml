@@ -1,0 +1,28 @@
+# Configuração de Dashboards do Grafana
+# =====================================
+
+apiVersion: 1
+
+providers:
+  # Dashboard provider para arquivos locais
+  - name: 'n8n-dashboards'
+    orgId: 1
+    folder: 'n8n'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+
+  # Dashboard provider para dashboards do sistema
+  - name: 'system-dashboards'
+    orgId: 1
+    folder: 'System'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards/system
+

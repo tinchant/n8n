@@ -1,0 +1,53 @@
+# Configuração de Datasources do Grafana
+# ======================================
+
+apiVersion: 1
+
+datasources:
+  # Prometheus datasource
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      timeInterval: "5s"
+      queryTimeout: "60s"
+      httpMethod: "POST"
+
+  # PostgreSQL datasource
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: n8n
+    user: t6t
+    secureJsonData:
+      password: bDpv887pCn@YT
+    jsonData:
+      sslmode: disable
+      maxOpenConns: 0
+      maxIdleConns: 2
+      connMaxLifetime: 14400
+
+  # Redis datasource (usando plugin se disponível)
+  - name: Redis
+    type: redis-datasource
+    access: proxy
+    url: redis://redis:6379
+    secureJsonData:
+      password: bDpv887pCn@YT
+    jsonData:
+      client: standalone
+
+  # JSON API datasource para n8n
+  - name: n8n API
+    type: grafana-simple-json-datasource
+    access: proxy
+    url: http://n8n:5678/api
+    basicAuth: true
+    basicAuthUser: t6t
+    secureJsonData:
+      basicAuthPassword: bDpv887pCn@YT
+

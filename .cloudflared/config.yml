@@ -1,0 +1,26 @@
+tunnel: bd4383e1-cca8-4ddf-afbf-c64cc2e2fcb1
+credentials-file: /home/nonroot/.cloudflared/bd4383e1-cca8-4ddf-afbf-c64cc2e2fcb1.json
+
+ingress:
+  # Nextcloud
+  - hostname: nextcloud.roladb.com.br
+    service: http://host.docker.internal:777
+  
+  # N8N Automation Platform
+  - hostname: n8n.roladb.com.br
+    service: http://host.docker.internal:5678
+  
+  # Grafana Monitoring Dashboard
+  - hostname: grafana.roladb.com.br
+    service: http://host.docker.internal:3000
+  
+  # Evolution API (WhatsApp API)
+  - hostname: evolution.roladb.com.br
+    service: http://host.docker.internal:8080
+  
+  # RabbitMQ Management Interface
+  - hostname: rabbitmq.roladb.com.br
+    service: http://host.docker.internal:15672
+  
+  # Catch-all rule
+  - service: http_status:404
